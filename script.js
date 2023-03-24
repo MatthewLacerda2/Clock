@@ -1,4 +1,6 @@
 function clock(){
+    console.log('dbug is on the table');
+
     var h=new Date().getHours();
     var m=new Date().getMinutes();
     var s=new Date().getSeconds();
