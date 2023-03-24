@@ -16,9 +16,7 @@ function clock(){
     document.getElementById("year").textContent=a;
 }
 
-var interval = setInterval(clock, 1000);
-
-function createCityClock(value){
+async function createCityClock(value){
     console.log(value)
     
     // Define your OpenWeatherMap API key and the base URL of the API
@@ -26,25 +24,22 @@ function createCityClock(value){
     const API_URL = "https://api.openweathermap.org/data/2.5/weather";
 
     // Define a function that takes a city name and returns a Promise that resolves to a JSON object
-    function getWeather(cityName) {
+    async function getWeather(cityName) {
         const url = `${API_URL}?q=${cityName}&appid=${API_KEY}`;
 
         // Fetch the data from the API and return it as JSON
-        return fetch(url).then(response => {
-            if (!response.ok) {
-                throw new Error(`Failed to fetch weather data: ${response.status}`);
-            }
-
-            return response.json();
-            }).catch(error => {
-                console.error(error);
-            });
+        const response = await fetch(url);
+        return response.json();
     }
 
+
     // Example usage
-    var results = getWeather(value).then(data => {
-        console.log(data);
-    });
+    try {
+        var result = await getWeather(value);
+        console.log(result.base,", ",result.sys.country,", ",result.timezone/3600);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 function getUTC(json){
@@ -66,3 +61,5 @@ function getName(json){
 function seLivrar(){
     alert("adios")
 }
+
+var interval = setInterval(clock, 1000);
