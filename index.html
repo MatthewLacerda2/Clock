@@ -4,82 +4,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stopwatches</title>
+    <title>World Clocks | Main</title>
     <link rel="stylesheet" href="./styles/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 
 <body>
 
-    <div class="wrapper">
+    <input type = "text" id = "txtSearch" class="searchBar" placeholder="Somethin"
+        onkeydown = "if (event.keyCode == 13) createCityClock(value)"
+    />
 
-        <!-- <input type="checkbox" id="btn" hidden>
+    <section class="fullTime">
+        <div class="cityName">Sua cidade</div>
         
-        <label for="btn" class="menu-btn">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-times"></i>
-        </label> -->
-        
-        <nav id="sidebar">
-            <div class="title">
-                Side menu
-            </div>
-            <ul class="list-items">
-                <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
-                <li><a href="#"><i class="fas fa-sliders-h"></i>Clients</a></li>
-                <li><a href="#"><i class="fas fa-address-book"></i>Services</a></li>
-                <li><a href="#"><i class="fas fa-cog"></i>Settings</a></li>
-                <li><a href="#"><i class="fas fa-stream"></i>Features</a></li>
-                <li><a href="#"><i class="fas fa-user"></i>About us</a></li>
-                <li><a href="#"><i class="fas fa-globe-asia"></i>Languages</a></li>
-                <li><a href="#"><i class="fas fa-envelope"></i>Contact us</a></li>
-                <div class="icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+        <section class="block">
+            <div id="clock">
+                <div id="time">
+                    <div>
+                        <span id="hours">00</span>
+                        <span>Horas</span>
+                    </div>
+                    <div>
+                        <span id="minutes">00</span>
+                        <span>Minutos</span>
+                    </div>
+                    <div>
+                        <span id="seconds">00</span>
+                        <span>Segundos</span>
+                    </div>
                 </div>
-            </ul>
-        </nav>
-    </div>
-    
-    <button class="creatorButton" id="createCityClock" onmousedown="createCityClock()">
-        +City
-    </button>
+            </div>
+        </section>
+        
+        <section class="block">
+            <div id="clock">
+                <div id="time">
+                    <div>
+                        <span id="day">00</span>
+                        <span>day</span>
+                    </div>
+                    <div>
+                        <span id="month">00</span>
+                        <span>month</span>
+                    </div>
+                    <div>
+                        <span id="year">00</span>
+                        <span>year</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section>
-        <div id="clock">
-            <div id="time">
-                <div>
-                    <span id="hours">00</span>
-                    <span>Horas</span>
-                </div>
-                <div>
-                    <span id="minutes">00</span>
-                    <span>Minutos</span>
-                </div>
-                <div>
-                    <span id="seconds">00</span>
-                    <span>Segundos</span>
-                </div>
-                
-                <div>
-                    <span id="day">00</span>
-                    <span>day</span>
-                </div>
-                <div>
-                    <span id="month">00</span>
-                    <span>month</span>
-                </div>
-                <div>
-                    <span id="year">00</span>
-                    <span>year</span>
-                </div>
-                
-            </div>
-        </div>
+        <a>
+            <button type="button" class="deleteButton" onclick="seLivrar()">X</button>
+        </a>
     </section>
-
+    
     <script src="./scripts/script.js"></script>
 </body>
 </html>
