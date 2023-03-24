@@ -27,38 +27,42 @@ function createCityClock(value){
 
     // Define a function that takes a city name and returns a Promise that resolves to a JSON object
     function getWeather(cityName) {
-        // Build the URL for the API request
         const url = `${API_URL}?q=${cityName}&appid=${API_KEY}`;
 
         // Fetch the data from the API and return it as JSON
-        return fetch(url)
-            .then(response => {
+        return fetch(url).then(response => {
             if (!response.ok) {
                 throw new Error(`Failed to fetch weather data: ${response.status}`);
             }
+
             return response.json();
-            })
-            .catch(error => {
-            console.error(error);
+            }).catch(error => {
+                console.error(error);
             });
     }
 
     // Example usage
-    getWeather(value).then(data => {
-    console.log(data);
+    var results = getWeather(value).then(data => {
+        console.log(data);
     });
+}
 
+function getUTC(json){
+    return json.timezone/3600;
+}
+
+function getClimate(json){
+    return json.weather[0].description;
+}
+
+function getCountry(json){
+    return json.sys.country;
+}
+
+function getName(json){
+    return json.name;
 }
 
 function seLivrar(){
     alert("adios")
 }
-
-// var inputElement = document.getElementById("myInput");
-
-// inputElement.addEventListener("keypress", function(event) {
-//     if (event.keyCode === 13) {
-//         // Call your function here
-//         myFunction();
-//     }
-// });

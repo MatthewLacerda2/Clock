@@ -11,55 +11,57 @@
 
 <body>
 
-    <input type = "text" id = "txtSearch" class="searchBar" placeholder="Somethin"
+    <input type = "text" id = "txtSearch" class="searchBar" placeholder="Something"
         onkeydown = "if (event.keyCode == 13) createCityClock(value)"
     />
 
-    <section class="fullTime">
+    <div class="fullInfo">
         <div class="cityName">Sua cidade</div>
         
-        <section class="block">
-            <div id="clock">
-                <div id="time">
-                    <div>
-                        <span id="hours">00</span>
-                        <span>Horas</span>
-                    </div>
-                    <div>
-                        <span id="minutes">00</span>
-                        <span>Minutos</span>
-                    </div>
-                    <div>
-                        <span id="seconds">00</span>
-                        <span>Segundos</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="block">
-            <div id="clock">
-                <div id="time">
-                    <div>
-                        <span id="day">00</span>
-                        <span>day</span>
-                    </div>
-                    <div>
-                        <span id="month">00</span>
-                        <span>month</span>
-                    </div>
-                    <div>
-                        <span id="year">00</span>
-                        <span>year</span>
+        <section class="fullTime">
+            <section class="block">
+                <div id="clock">
+                    <div id="time">
+                        <div>
+                            <span id="hours">00</span>
+                            <span>Horas</span>
+                        </div>
+                        <div>
+                            <span id="minutes">00</span>
+                            <span>Minutos</span>
+                        </div>
+                        <div>
+                            <span id="seconds">00</span>
+                            <span>Segundos</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
+            
+            <section class="block">
+                <div id="clock">
+                    <div id="time">
+                        <div>
+                            <span id="day">00</span>
+                            <span>day</span>
+                        </div>
+                        <div>
+                            <span id="month">00</span>
+                            <span>month</span>
+                        </div>
+                        <div>
+                            <span id="year">00</span>
+                            <span>year</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </section>
 
         <a>
             <button type="button" class="deleteButton" onclick="seLivrar()">X</button>
         </a>
-    </section>
+    </div>
     
     <script src="./scripts/script.js"></script>
 </body>
