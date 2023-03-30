@@ -11,11 +11,11 @@
 
 <body>
 
-    <input type = "text" id = "txtSearch" class="searchBar" placeholder="Something"
+    <input type = "text" id = "txtSearch" class="searchBar" placeholder="Digite uma cidade"
         onkeydown = "if (event.keyCode == 13) createCityClock(value)"
     />
 
-    <div class="fullInfo">
+    <div id="container0" class="fullInfo">
         <div class="cityName">Sua cidade</div>
         
         <section class="fullTime">
@@ -56,11 +56,9 @@
                     </div>
                 </div>
             </section>
-        </section>
 
-        <a>
             <button type="button" class="deleteButton" onclick="seLivrar()">X</button>
-        </a>
+        </section>
     </div>
     
     <script src="./scripts/script.js"></script>

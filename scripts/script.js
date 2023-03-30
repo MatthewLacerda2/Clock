@@ -1,24 +1,30 @@
-function clock(){
-    var h=new Date().getHours();
-    var m=new Date().getMinutes();
-    var s=new Date().getSeconds();
+function clock(utc, index){
+    
+    date = new Date()+utc;
 
-    var hours=document.getElementById("hours").textContent=h;
-    var minutes=document.getElementById("minutes").textContent=m;
-    var seconds=document.getElementById("seconds").textContent=s;    
+    var h=date;
+    var m=date;
+    var s=date;
 
-    var d  =new Date().getDate();
-    var mes=new Date().getMonth();
-    var a  =new Date().getFullYear();    
+    console.log(h)
+    console.log(document.getElementById("container"+index).querySelectorAll("hours"))
 
-    document.getElementById("day").textContent=d;
-    document.getElementById("month").textContent=mes;
-    document.getElementById("year").textContent=a;
+    var hours=document.getElementById("container"+index).querySelectorAll("hours").textContent=h;
+    var minutes=document.getElementById("container"+index).querySelectorAll("minutes").textContent=m;
+    var seconds=document.getElementById("container"+index).querySelectorAll("seconds").textContent=s;    
+
+    var d  =date;
+    var mes=date;
+    var a  =date;
+
+    document.getElementById("container"+index).querySelectorAll("day").textContent=d;
+    document.getElementById("container"+index).querySelectorAll("month").textContent=mes;
+    document.getElementById("container"+index).querySelectorAll("year").textContent=a;
+
+    
 }
 
-async function createCityClock(value){
-    console.log(value)
-    
+async function createCityClock(value){    
     // Define your OpenWeatherMap API key and the base URL of the API
     const API_KEY = "be66b4035e8f83af5b80982c259c116a";
     const API_URL = "https://api.openweathermap.org/data/2.5/weather";
@@ -32,14 +38,34 @@ async function createCityClock(value){
         return response.json();
     }
 
-
+    var base, country, timezone;
+    var resultado;
+    
     // Example usage
     try {
-        var result = await getWeather(value);
-        console.log(result.base,", ",result.sys.country,", ",result.timezone/3600);
+        const result = await getWeather(value);
+        
+        resultado=result;
+        base=result.name;
+        country=result.sys.country;
+        timezone=result.timezone/3600;
     } catch (error) {
         console.log(error);
     }
+
+    console.log(base)
+    console.log(country)
+    console.log(timezone)
+    makeNewClock(resultado);
+}
+
+function makeNewClock(result){
+    console.log("container"+num)
+    const sectionToDuplicate = document.getElementById("container"+num);
+    const clonedSection = sectionToDuplicate.cloneNode(true);
+    document.body.appendChild(clonedSection);
+    num++;
+    clonedSection.id="container"+num;
 }
 
 function getUTC(json){
@@ -62,4 +88,5 @@ function seLivrar(){
     alert("adios")
 }
 
-var interval = setInterval(clock, 1000);
+var num=0;
+var interval = setInterval(clock(0, num), 1000);
